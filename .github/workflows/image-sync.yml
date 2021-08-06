@@ -26,7 +26,7 @@ env:
 
 jobs:
   mirror:
-    name: Mirror ${{ github.event.inputs.image }} to ${{ env.NEW_IMAGE_NAME }}
+    name: Mirror ${{ github.event.inputs.image }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
