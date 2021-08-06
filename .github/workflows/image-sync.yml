@@ -22,10 +22,10 @@ env:
   # k8s.gcr.io/dns/dns-local-cache:v1.7.0
   IMAGE_NAME: ${{ github.event.inputs.image }}
   # new image name
-  NEW_IMAGE_NAME: ${REGISTRY}/${{ github.repository }}/${{ github.event.inputs.name }}
+  NEW_IMAGE_NAME: ghcr.io/${{ github.repository }}/${{ github.event.inputs.name }}
 
 jobs:
-  build:
+  mirror:
 
     runs-on: ubuntu-latest
     permissions:
