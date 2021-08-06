@@ -22,7 +22,7 @@ env:
   # k8s.gcr.io/dns/dns-local-cache:v1.7.0
   IMAGE_NAME: ${{ github.event.inputs.image }}
   # new image name
-  NEW_IMAGE_NAME: ${{ env.REGISTRY }}/${{ github.event.inputs.name }}
+  NEW_IMAGE_NAME: ${{ github.event.inputs.name }}
 
 jobs:
   mirror:
@@ -48,7 +48,7 @@ jobs:
 
       - run: |
           docker pull ${IMAGE_NAME}
-          docker image tag ${IMAGE_NAME} ${NEW_IMAGE_NAME}
+          docker image tag ${IMAGE_NAME} ${REGISTRY}/${NEW_IMAGE_NAME}
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
@@ -56,4 +56,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ env.NEW_IMAGE_NAME }}
+          tags: ${{ env.REGISTRY }}/${{ env.NEW_IMAGE_NAME }}
