@@ -1,4 +1,4 @@
-name: Docker
+name: Mirror ${{ github.event.inputs.image }} to ${REGISTRY}/${{ github.repository }}/${{ github.event.inputs.name }}
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
