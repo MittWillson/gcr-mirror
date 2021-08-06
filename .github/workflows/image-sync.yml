@@ -49,11 +49,4 @@ jobs:
       - run: |
           docker pull ${IMAGE_NAME}
           docker image tag ${IMAGE_NAME} ${REGISTRY}/${NEW_IMAGE_NAME}
-
-      # Build and push Docker image with Buildx (don't push on PR)
-      # https://github.com/docker/build-push-action
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: ${{ env.REGISTRY }}/${{ env.NEW_IMAGE_NAME }}
+          docker push ${REGISTRY}/${NEW_IMAGE_NAME}
